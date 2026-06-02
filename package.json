@@ -7,11 +7,15 @@
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist -b web",
     "build-only": "vite build",
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@germingi/vue3-video-player": "^1.2.0",
     "@tailwindcss/vite": "^4.3.0",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4.3.0",
     "vue": "^3.5.32",
     "vue-router": "^5.1.0"

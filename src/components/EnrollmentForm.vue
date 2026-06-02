@@ -312,29 +312,50 @@ const submitForm = async () => {
 
   isSubmitting.value = true;
 
-  // Simulate API call
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  try {
+    const response = await fetch("https://sheet2api.com/v1/E5SfX1ooQXCz/conecta-talento-incripciones-demo/Demo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        Nombre: form.value.name,
+        Email: form.value.email,
+        Telefono: form.value.phone,
+        Negocio: form.value.business,
+        Experiencia: form.value.experience,
+        Taller: form.value.workshops.join(', '),
+        Historia: form.value.message,
+        Notificaciones: form.value.terms ? 'Sí' : 'No'
+      })
+    });
 
-  // Log form data (in a real app, this would send to a backend)
-  console.log("Form submitted:", form.value);
-
-  isSubmitting.value = false;
-  submitSuccess.value = true;
-
-  // Reset form
-  setTimeout(() => {
-    form.value = {
-      name: "",
-      email: "",
-      phone: "",
-      business: "",
-      experience: "",
-      workshops: [],
-      message: "",
-      terms: false,
-    };
-    submitSuccess.value = false;
-  }, 3000);
+    if (response.status === 201) {
+      submitSuccess.value = true;
+      // Reset form
+      setTimeout(() => {
+        form.value = {
+          name: "",
+          email: "",
+          phone: "",
+          business: "",
+          experience: "",
+          workshops: [],
+          message: "",
+          terms: false,
+        };
+        submitSuccess.value = false;
+      }, 3000);
+    } else {
+      console.error("Error submitting form:", response.status);
+      alert("Hubo un error al enviar tu inscripción. Inténtalo de nuevo.");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    alert("Hubo un error de conexión al enviar tu inscripción.");
+  } finally {
+    isSubmitting.value = false;
+  }
 };
 </script>
 

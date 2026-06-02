@@ -13,33 +13,18 @@ import AppbarComponent from "@/components/AppbarComponent.vue";
 </template>
 
 <style scoped>
-.page-transition-enter-active {
-  animation: slideInRight 0.5s ease-out;
-}
-
+.page-transition-enter-active,
 .page-transition-leave-active {
-  animation: slideOutLeft 0.5s ease-in;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.page-transition-enter-from {
+  opacity: 0;
+  transform: translateY(15px);
 }
 
-@keyframes slideOutLeft {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
+.page-transition-leave-to {
+  opacity: 0;
+  transform: translateY(-15px);
 }
 </style>

@@ -17,13 +17,13 @@
         <!-- Navigation Links -->
         <div class="hidden md:flex space-x-2">
           <a
-            href="#about"
+            href="/"
             class="px-4 py-2 rounded-lg transition duration-300 text-sm font-medium text-blue-500"
           >
             LA ESCUELA
           </a>
           <a
-            href="#workshops"
+            href="/#workshops"
             class="px-4 py-2 rounded-lg transition duration-300 text-sm font-medium text-blue-500"
            
           >
@@ -36,10 +36,10 @@
             CURSOS
           </router-link>
           <a
-            href="#news"
+            href="/#team"
             class="px-4 py-2 rounded-lg transition duration-300 text-sm font-medium text-blue-500"
           >
-            NOTICIAS
+            EQUIPO
           </a>
         </div>
 
@@ -54,8 +54,7 @@
         <!-- Mobile menu button -->
         <button
           @click="mobileMenuOpen = !mobileMenuOpen"
-          class="md:hidden"
-          style="color: white;"
+          class="md:hidden text-blue-500 p-2"
         >
           <svg
             class="w-6 h-6"
@@ -76,45 +75,39 @@
       <!-- Mobile Navigation -->
       <div 
         v-if="mobileMenuOpen" 
-        class="md:hidden mt-3 px-6 py-4 rounded-2xl shadow-2xl border"
-        style="background: rgba(26, 26, 26, 0.7); border-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);"
+        class="md:hidden mt-3 px-6 py-4 rounded-2xl shadow-2xl border border-gray-100 bg-white"
       >
         <a 
-          href="#about" 
-          class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300"
-          style="color: #e5e7eb;"
+          href="/" 
+          class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300 text-blue-500 hover:bg-blue-50"
           @click="mobileMenuOpen = false"
         >
           LA ESCUELA
         </a>
         <a 
-          href="#workshops" 
-          class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300"
-          style="color: #e5e7eb;"
+          href="/#workshops" 
+          class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300 text-blue-500 hover:bg-blue-50"
           @click="mobileMenuOpen = false"
         >
           PROGRAMAS
         </a>
         <router-link 
           to="/cursos"
-          class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300"
-          style="color: #e5e7eb;"
+          class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300 text-blue-500 hover:bg-blue-50"
           @click="mobileMenuOpen = false"
         >
           CURSOS
         </router-link>
         <a 
-          href="#news" 
-          class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300"
-          style="color: #e5e7eb;"
+          href="/#team" 
+          class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300 text-blue-500 hover:bg-blue-50"
           @click="mobileMenuOpen = false"
         >
-          NOTICIAS
+          EQUIPO
         </a>
         <button
           @click="scrollToEnrollment"
-          class="w-full mt-3 px-6 py-2 rounded-full font-semibold text-sm"
-          style="background-color: white; color: #1a1a1a;"
+          class="w-full mt-3 px-6 py-3 rounded-full font-semibold text-sm bg-linear-to-r from-blue-500 to-blue-600 text-white"
         >
           INSCRIPCIÓN
         </button>
@@ -125,14 +118,18 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-
+import { useRouter } from "vue-router";
 const mobileMenuOpen = ref(false);
+
+
+const router = useRouter();
 
 const scrollToEnrollment = () => {
   const element = document.getElementById("enrollment-form");
   if (element) {
     element.scrollIntoView({ behavior: "smooth" });
   }
+  router.push("/#enrollment-form");
 };
 </script>
 

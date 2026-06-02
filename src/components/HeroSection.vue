@@ -1,7 +1,7 @@
 <template>
 
   <section
-    class="relative h-96 md:h-screen bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden"
+    class="relative min-h-[500px] md:h-screen bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden"
   >
 
   <slot name="header"></slot>
@@ -16,23 +16,21 @@
     ></div>
 
     <!-- Content -->
-    <div class="relative flex items-center justify-center h-full">
-      <div class="text-center text-white px-4">
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+    <div class="relative flex flex-col justify-center items-center h-full w-full pt-32 pb-12 md:pt-0 md:pb-0">
+      <div class="text-center text-white px-6 sm:px-8 max-w-4xl mx-auto">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight drop-shadow-lg">
           LA EDUCACIÓN SE ENCUENTRA
           <br />
-          <span style="color: #36b3fa;">CON EL EMPRENDIMIENTO</span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300 drop-shadow-md">CON EL EMPRENDIMIENTO</span>
         </h1>
-        <p class="text-lg md:text-xl mb-8 text-gray-200 max-w-2xl mx-auto">
+        <p class="text-base sm:text-lg md:text-xl mb-10 text-gray-200 max-w-2xl mx-auto drop-shadow-sm leading-relaxed">
           Conecta Talento capacita emprendedores en El Salvador para generar
           ingresos sostenibles y transformar sus vidas a través del conocimiento
           digital.
         </p>
         <button
           @click="scrollToEnrollment"
-          class="text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-lg"
-          style="background-color: #36b3fa;"
-       
+          class="text-white font-bold py-4 px-10 rounded-full transition-all duration-300 text-lg sm:text-xl bg-gradient-to-r from-blue-500 to-blue-400 hover:from-blue-400 hover:to-blue-300 "
         >
           ¡ÚNETE AHORA!
         </button>

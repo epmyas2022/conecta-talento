@@ -1,6 +1,5 @@
 <template>
   <div class="view-transition min-h-screen bg-gray-50">
-
     <br />
     <br />
 
@@ -63,7 +62,14 @@
             class="w-full h-96 rounded-xl mb-8 flex items-center justify-center text-6xl shadow-lg"
             :style="{ backgroundColor: course?.color }"
           >
-             <img v-if="course?.iconUrl" :src="course.iconUrl" :alt="course.title" class="w-full h-full object-contain p-2" />
+            <div class="relative">
+              <img
+                src="/logo.png"
+                alt="Course Icon"
+                class="w-20 h-20 object-contain p-4 absolute top-0 left-0 z-10 animate-floating-logo"
+              />
+              <VideoPlayer video-url="/videos/Introducción.mp4" />
+            </div>
           </div>
 
           <!-- About Section -->
@@ -73,12 +79,6 @@
             </h2>
             <p class="text-gray-700 leading-relaxed mb-4">
               {{ course?.fullDescription }}
-            </p>
-            <p class="text-gray-700 leading-relaxed">
-              Este curso está diseñado para emprendedores de todos los niveles
-              que desean adquirir conocimientos prácticos y aplicables
-              inmediatamente. A través de 24 lecciones interactivas, aprenderás
-              desde los conceptos más básicos hasta estrategias avanzadas.
             </p>
           </div>
 
@@ -175,10 +175,6 @@
                   <span class="text-gray-400 mt-1">•</span>
                   <span>Conexión a internet</span>
                 </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-gray-400 mt-1">•</span>
-                  <span>30 minutos por día para estudiar</span>
-                </li>
               </ul>
             </div>
 
@@ -186,30 +182,39 @@
             <div class="mb-8">
               <h3 class="font-bold text-gray-900 mb-3">Instructor</h3>
               <div class="flex items-center gap-3">
-                <div
-                  class="w-12 h-12 rounded-full"
-                  :style="{ backgroundColor: course?.color }"
-                ></div>
+                <img
+                  v-if="course?.instructor"
+                  :src="course.instructor.profileUrl"
+                  :alt="course.title"
+                  class="w-12 h-12 rounded-full object-cover"
+                />
                 <div>
-                  <p class="font-semibold text-gray-900">Conecta Talento</p>
-                  <p class="text-sm text-gray-600">Experto en emprendimiento</p>
+                  <p class="font-semibold text-gray-900">
+                    {{ course?.instructor.title }}
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    {{ course?.instructor.name }}
+                  </p>
                 </div>
               </div>
             </div>
 
             <!-- CTA Button -->
-            <button
-              class="w-full py-3 rounded-lg font-semibold text-white transition duration-300 text-lg"
-              :style="{ backgroundColor: course?.color }"
-            >
-              Inscribirse Ahora
-            </button>
-            <button
+
+            <a href="/#enrollment-form">
+              <button
+                class="w-full py-3 rounded-lg font-semibold text-white transition duration-300 text-lg"
+                :style="{ backgroundColor: course?.color }"
+              >
+                Inscribirse Ahora
+              </button>
+            </a>
+            <!--  <button
               class="w-full mt-3 py-3 rounded-lg font-semibold border-2 transition duration-300"
               :style="{ borderColor: course?.color, color: course?.color }"
             >
               Agregar a favoritos
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
@@ -223,6 +228,7 @@
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import FooterComponent from "@/components/FooterComponent.vue";
+import { VideoPlayer } from "@germingi/vue3-video-player";
 
 interface Course {
   id: number;
@@ -239,6 +245,11 @@ interface Course {
   reviews: number;
   price: string;
   category: string;
+  instructor: {
+    title: string;
+    name: string;
+    profileUrl: string;
+  };
   learningPoints: string[];
   curriculum: Array<{ title: string; duration: string }>;
 }
@@ -258,55 +269,23 @@ const coursesData: { [key: number]: Course } = {
     iconUrl: "logo.png",
     color: "#36b3fa",
     level: "Bienvenida",
-    duration: "1 hora",
+    duration: " 2 minutos",
     lessons: 1,
     students: 0,
     reviews: 487,
     price: "Gratis",
     category: "Emprendimiento",
+    instructor: {
+      title: "Conecta Talento",
+      name: "Experta en emprendimiento",
+      profileUrl: "/profiles/erika-profile.png",
+    },
     learningPoints: [
       "Conocer la misión de Conecta Talento",
       "Entender la estructura de los programas",
-      "Aprender a navegar la plataforma",
-      "Conectar con la comunidad de emprendedores",
     ],
     curriculum: [
-      { title: "Introducción a Conecta Talento", duration: "15 min" },
-      { title: "Tour por la plataforma", duration: "20 min" },
-      { title: "Cómo usar los recursos", duration: "15 min" },
-      { title: "Próximos pasos", duration: "10 min" },
-    ],
-  },
-  2: {
-    id: 2,
-    title: "Introducción al Emprendimiento",
-    description:
-      "Descubre los fundamentos básicos para iniciar tu emprendimiento con éxito.",
-    fullDescription:
-      "Un curso completo que te guiará desde la idea inicial hasta el lanzamiento de tu primer negocio. Aprenderás conceptos clave de emprendimiento, validación de ideas y estrategias de crecimiento.",
-    icon: "🎯",
-    color: "#235fb4",
-    level: "Principiante",
-    duration: "4 semanas",
-    lessons: 24,
-    students: 1250,
-    reviews: 487,
-    price: "Gratis",
-    category: "Emprendimiento",
-    learningPoints: [
-      "Conceptos fundamentales del emprendimiento",
-      "Validación de ideas de negocio",
-      "Análisis del mercado",
-      "Creación de un plan de negocios",
-      "Gestión de riesgos",
-    ],
-    curriculum: [
-      { title: "¿Qué es el emprendimiento?", duration: "1h 30m" },
-      { title: "De la idea al concepto", duration: "2h" },
-      { title: "Investigación de mercado", duration: "2h 15m" },
-      { title: "Plan de negocios", duration: "2h 30m" },
-      { title: "Financiamiento inicial", duration: "1h 45m" },
-      { title: "Lanzamiento del negocio", duration: "2h" },
+      { title: "Introducción a Conecta Talento", duration: "2 min" },
     ],
   },
 };
@@ -320,6 +299,19 @@ onMounted(() => {
 <style scoped>
 ::view-transition-old(root) {
   animation: slide-out-right 0.5s ease-in-out;
+}
+
+@keyframes slowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-floating-logo {
+  animation: slowSpin 8s linear infinite;
 }
 
 ::view-transition-new(root) {
