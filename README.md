@@ -1,42 +1,7 @@
-# conecta-talento
+# Conecta Talento - Plataforma de Cursos
 
-This template should help get you started developing with Vue 3 in Vite.
+Ejemplo de producto digital para exposicion de la materia de Desarrollo de Emprendedores,
+ Univeridad Pedagogica de El Salvador 2026. El proyecto este enfocado en capacitar a las personas en habilidades de emprendimiento, ofreciendo cursos gratuitos y de calidad para fomentar el desarrollo de nuevos negocios y proyectos innovadores.
 
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+<img src="./portada.png" alt="Portada de Conecta Talento"
+style="width: 700px; height: auto; margin-top: 20px; border-radius: 10px;">
