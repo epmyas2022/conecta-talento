@@ -25,8 +25,8 @@
             LA ESCUELA
           </a>
           <a
-            :href="`${baseUrl}#workshops`"
-            class="px-4 py-2 rounded-lg transition duration-300 text-sm font-medium text-blue-500"
+            @click="moveSection('workshops')"
+            class="px-4 py-2 rounded-lg transition duration-300 text-sm font-medium text-blue-500 cursor-pointer"
           >
             PROGRAMAS
           </a>
@@ -37,8 +37,8 @@
             CURSOS
           </router-link>
           <a
-            :href="`${baseUrl}#team`"
-            class="px-4 py-2 rounded-lg transition duration-300 text-sm font-medium text-blue-500"
+            @click="moveSection('team')"
+            class="px-4 py-2 rounded-lg transition duration-300 text-sm font-medium text-blue-500 cursor-pointer"
           >
             EQUIPO
           </a>
@@ -86,9 +86,8 @@
           LA ESCUELA
         </a>
         <a
-          :href="`${baseUrl}#workshops`"
+          @click="moveSection('workshops'); mobileMenuOpen = false"
           class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300 text-blue-500 hover:bg-blue-50"
-          @click="mobileMenuOpen = false"
         >
           PROGRAMAS
         </a>
@@ -100,9 +99,8 @@
           CURSOS
         </router-link>
         <a
-          :href="`${baseUrl}#team`"
+          @click="moveSection('team'); mobileMenuOpen = false"
           class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300 text-blue-500 hover:bg-blue-50"
-          @click="mobileMenuOpen = false"
         >
           EQUIPO
         </a>
@@ -126,12 +124,18 @@ const router = useRouter();
 
 const baseUrl = import.meta.env.BASE_URL || "/";
 
-const scrollToEnrollment = () => {
-  const element = document.getElementById("enrollment-form");
+const moveSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  router.push("/#" + sectionId);
+  
   if (element) {
     element.scrollIntoView({ behavior: "smooth" });
   }
-  router.push("/#enrollment-form");
+
+};
+
+const scrollToEnrollment = () => {
+  moveSection("enrollment-form");
 };
 </script>
 

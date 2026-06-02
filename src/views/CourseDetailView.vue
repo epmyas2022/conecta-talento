@@ -68,12 +68,14 @@
                 alt="Course Icon"
                 class="w-20 h-20 object-contain p-4 absolute top-0 left-0 z-10 animate-floating-logo"
               />
-              <VideoPlayer video-url="../videos/Introducción.mp4" />
+              <VideoPlayer :video-url="`${baseUrl}videos/Introducción.mp4`" />
             </div>
           </div>
 
+          
           <!-- About Section -->
           <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <br>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">
               Sobre este curso
             </h2>
@@ -184,7 +186,7 @@
               <div class="flex items-center gap-3">
                 <img
                   v-if="course?.instructor"
-                  :src="course.instructor.profileUrl"
+                  :src="`${baseUrl}${course.instructor.profileUrl}`"
                   :alt="course.title"
                   class="w-12 h-12 rounded-full object-cover"
                 />
@@ -257,6 +259,8 @@ interface Course {
 const route = useRoute();
 const course = ref<Course | null>(null);
 
+const baseUrl = import.meta.env.BASE_URL || "/";
+
 const coursesData: { [key: number]: Course } = {
   1: {
     id: 1,
@@ -278,7 +282,7 @@ const coursesData: { [key: number]: Course } = {
     instructor: {
       title: "Conecta Talento",
       name: "Experta en emprendimiento",
-      profileUrl: "../profiles/erika-profile.png",
+      profileUrl: "profiles/erika-profile.png",
     },
     learningPoints: [
       "Conocer la misión de Conecta Talento",
