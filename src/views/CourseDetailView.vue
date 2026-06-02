@@ -68,7 +68,7 @@
                 alt="Course Icon"
                 class="w-20 h-20 object-contain p-4 absolute top-0 left-0 z-10 animate-floating-logo"
               />
-              <VideoPlayer video-url="/videos/Introducción.mp4" />
+              <VideoPlayer video-url="../videos/Introducción.mp4" />
             </div>
           </div>
 
