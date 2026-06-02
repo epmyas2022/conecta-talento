@@ -62,7 +62,7 @@
             class="w-full h-96 rounded-xl mb-8 flex items-center justify-center text-6xl shadow-lg"
             :style="{ backgroundColor: course?.color }"
           >
-            <div class="relative">
+            <div class="relative w-full h-full">
               <img
                 src="/logo.png"
                 alt="Course Icon"

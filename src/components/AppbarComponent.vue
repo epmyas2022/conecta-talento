@@ -19,13 +19,13 @@
         <!-- Navigation Links -->
         <div class="hidden md:flex space-x-2">
           <a
-            href="../"
+            :href="`${baseUrl}#`"
             class="px-4 py-2 rounded-lg transition duration-300 text-sm font-medium text-blue-500"
           >
             LA ESCUELA
           </a>
           <a
-            href="#workshops"
+            :href="`${baseUrl}#workshops`"
             class="px-4 py-2 rounded-lg transition duration-300 text-sm font-medium text-blue-500"
           >
             PROGRAMAS
@@ -37,7 +37,7 @@
             CURSOS
           </router-link>
           <a
-            href="#team"
+            :href="`${baseUrl}#team`"
             class="px-4 py-2 rounded-lg transition duration-300 text-sm font-medium text-blue-500"
           >
             EQUIPO
@@ -79,14 +79,14 @@
         class="md:hidden mt-3 px-6 py-4 rounded-2xl shadow-2xl border border-gray-100 bg-white"
       >
         <a
-          href="../"
+          :href="`${baseUrl}#`"
           class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300 text-blue-500 hover:bg-blue-50"
           @click="mobileMenuOpen = false"
         >
           LA ESCUELA
         </a>
         <a
-          href="#workshops"
+          :href="`${baseUrl}#workshops`"
           class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300 text-blue-500 hover:bg-blue-50"
           @click="mobileMenuOpen = false"
         >
@@ -100,7 +100,7 @@
           CURSOS
         </router-link>
         <a
-          href="#team"
+          :href="`${baseUrl}#team`"
           class="block px-4 py-3 rounded-lg text-sm font-medium transition duration-300 text-blue-500 hover:bg-blue-50"
           @click="mobileMenuOpen = false"
         >
@@ -123,6 +123,8 @@ import { useRouter } from "vue-router";
 const mobileMenuOpen = ref(false);
 
 const router = useRouter();
+
+const baseUrl = import.meta.env.BASE_URL || "/";
 
 const scrollToEnrollment = () => {
   const element = document.getElementById("enrollment-form");
