@@ -3,3 +3,7 @@
 * {
   font-family: 'Figtree', 'Times New Roman';
 }
+
+html, body {
+  scroll-behavior: smooth;
+}

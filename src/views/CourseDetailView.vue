@@ -278,7 +278,7 @@ const coursesData: { [key: number]: Course } = {
     instructor: {
       title: "Conecta Talento",
       name: "Experta en emprendimiento",
-      profileUrl: "/profiles/erika-profile.png",
+      profileUrl: "../profiles/erika-profile.png",
     },
     learningPoints: [
       "Conocer la misión de Conecta Talento",
