@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 import AppbarComponent from "@/components/AppbarComponent.vue";
+import FloatingChat from "@/components/FloatingChat.vue";
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import AppbarComponent from "@/components/AppbarComponent.vue";
     <Transition name="page-transition" mode="out-in">
       <RouterView :key="$route.path" />
     </Transition>
+    <FloatingChat />
   </div>
 </template>
 

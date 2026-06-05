@@ -15,6 +15,7 @@
   "dependencies": {
     "@germingi/vue3-video-player": "^1.2.0",
     "@tailwindcss/vite": "^4.3.0",
+    "deep-chat": "^2.4.2",
     "gh-pages": "^6.3.0",
     "tailwindcss": "^4.3.0",
     "vue": "^3.5.32",

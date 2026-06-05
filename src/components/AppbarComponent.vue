@@ -104,6 +104,7 @@
         >
           EQUIPO
         </a>
+
         <button
           @click="scrollToEnrollment"
           class="w-full mt-3 px-6 py-3 rounded-full font-semibold text-sm bg-linear-to-r from-blue-500 to-blue-600 text-white"
