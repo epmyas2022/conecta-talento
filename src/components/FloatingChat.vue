@@ -75,7 +75,7 @@
         class="w-full h-full"
         id="conecta-chat-fab"
         :history="history"
-        :connect="directConnection"
+        :connect="generateConfig()"
         :requestInterceptor="requestInterceptor"
         :responseInterceptor="responseInterceptor"
         style="height: 100%; width: 100%; border: none; background: #ffffff"
@@ -86,7 +86,6 @@
           styles: {
             container: {
               padding: '4px',
-          
             },
           },
         }"
@@ -96,7 +95,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import "deep-chat";
 
 import SYSTEM_PROMPT from "@/context/index";
@@ -111,14 +110,27 @@ const history = ref<{ role: string; text: string }[]>([
 const isOpen = ref(false);
 const isLoading = ref(false);
 
+const groq_key = ref("");
+
+onMounted(async () => {
+  try {
+    const response = await fetch(
+      "https://conecta-talento.free.beeceptor.com/groq",
+    );
+    const data = await response.json();
+    groq_key.value = data.key_demo;
+  } catch (error) {
+    console.error("Error fetching GROQ key:", error);
+  }
+});
 const GROQ_MODEL = "qwen/qwen3-32b";
 
-const directConnection = {
+const generateConfig = () => ({
   url: "https://api.groq.com/openai/v1/chat/completions",
   method: "POST",
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
+    Authorization: `Bearer ${groq_key.value}`,
   },
   stream: true,
   additionalBodyProps: {
@@ -127,7 +139,7 @@ const directConnection = {
     stream: true,
     reasoning_effort: "none",
   },
-};
+});
 
 const requestInterceptor = (request: any) => {
   // Agregar el mensaje del usuario al historial antes de enviar la solicitud
