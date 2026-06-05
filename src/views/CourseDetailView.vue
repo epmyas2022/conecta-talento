@@ -59,7 +59,7 @@
         <div class="lg:col-span-2">
           <!-- Course Image -->
           <div
-            class="w-full h-96 rounded-xl mb-8 flex items-center justify-center text-6xl shadow-lg"
+            class="w-full md:h-96 rounded-xl md:mb-8 flex items-center justify-center text-6xl shadow-lg"
             :style="{ backgroundColor: course?.color }"
           >
             <div class="relative w-full h-full">
@@ -68,14 +68,17 @@
                 alt="Course Icon"
                 class="w-20 h-20 object-contain p-4 absolute top-0 left-0 z-10 animate-floating-logo"
               />
-              <VideoPlayer :video-url="`${baseUrl}videos/Introducción.mp4`" />
+              <VideoPlayer
+                :videoHeight="610"
+                :video-width="1080"
+                :video-url="`${baseUrl}videos/Introducción.mp4`"
+              />
             </div>
           </div>
 
-          
           <!-- About Section -->
           <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <br>
+            <br />
             <h2 class="text-2xl font-bold text-gray-900 mb-4">
               Sobre este curso
             </h2>
@@ -203,7 +206,7 @@
 
             <!-- CTA Button -->
 
-            <a href="/#enrollment-form">
+            <a @click="moveSection('enrollment-form')">
               <button
                 class="w-full py-3 rounded-lg font-semibold text-white transition duration-300 text-lg"
                 :style="{ backgroundColor: course?.color }"
@@ -231,6 +234,7 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import FooterComponent from "@/components/FooterComponent.vue";
 import { VideoPlayer } from "@germingi/vue3-video-player";
+import { useUtils } from "@/composables/utils";
 
 interface Course {
   id: number;
@@ -258,6 +262,8 @@ interface Course {
 
 const route = useRoute();
 const course = ref<Course | null>(null);
+
+const { moveSection } = useUtils();
 
 const baseUrl = import.meta.env.BASE_URL || "/";
 

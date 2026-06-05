@@ -117,22 +117,14 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { useUtils} from "@/composables/utils";
+
 const mobileMenuOpen = ref(false);
 
-const router = useRouter();
+const { moveSection } = useUtils();
 
 const baseUrl = import.meta.env.BASE_URL || "/";
 
-const moveSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId);
-  router.push("/#" + sectionId);
-  
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-
-};
 
 const scrollToEnrollment = () => {
   moveSection("enrollment-form");
